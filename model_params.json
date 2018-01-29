@@ -1,0 +1,40 @@
+{
+	"lr": 0.001,
+	"batch_size": 32,
+	"epochs": 5,
+	"split": 0.1,
+	"data_path": "./dataset/train.csv",
+	"img_shape": [28, 28],
+	"encoder_params": {
+		"input_shape": [28, 28],
+		"conv":{
+			"k_size": [3, 3, 3],
+			"n_k": [16, 32, 64],
+			"strides": [1, 1, 1],
+			"padding": ["SAME", "SAME", "SAME"],
+			"do_pool": [false, true, true],
+			"pool": [
+				{
+					"k": 2,
+					"strides": 2
+				},
+				{
+					"k": 2,
+					"strides": 2
+				}
+			]
+		},
+		"fc": [120],
+		"nonlin": "relu"
+	},
+	"decoder_params": {
+		"dconv": {
+			"k_size": [3, 3, 3],
+			"n_k": [16, 16, 1],
+			"strides": [1, 2, 2],
+			"padding": ["same", "same", "same"]
+		},
+		"fc": [49],
+		"nonlin": "relu"
+	}
+}
